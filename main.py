@@ -1,4 +1,5 @@
 import xlwings as xl
+import matplotlib.pyplot as plt
 
 filepath = "priceindexofprivaterentsukhistoricalseriesaccessible.xlsx"
 
@@ -14,4 +15,20 @@ for value in rentValues:
 
 wb1.save(filepath)
 wb1.close()
+
+def generatePlot():
+
+    plt.style.use("fivethirtyeight")
+    fig, ax1 = plt.subplots()
+    ax1.plot(monthValues, rentValues, label="Average rent price in England (£)", color="red")
+    ax1.set_xlabel("Date")
+    ax1.set_ylabel("Average rent in England (£)")
+
+    plt.tight_layout()
+
+    plt.show()
+
+generatePlot()
+
+
 
